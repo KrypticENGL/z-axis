@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"t1"}
+{"type":"turn.started"}
+{"type":"item.started","item":{"id":"i0","type":"mcp_tool_call","server":"zaxis","tool":"blender_scene_info","status":"in_progress"}}
+{"type":"item.completed","item":{"id":"i1","type":"agent_message","text":"Done."}}
+{"type":"turn.completed","usage":{"input_tokens":1}}

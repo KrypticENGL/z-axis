@@ -1,0 +1,28 @@
+# Rust build output (Cargo.lock stays committed: this is a binary)
+/target
+**/*.rs.bk
+*.pdb
+
+# code-review-graph index
+.code-review-graph/
+
+# Claude Code per-user settings (shared .claude/settings.json and skills stay)
+.claude/settings.local.json
+
+# Python (Blender add-on, test scripts)
+__pycache__/
+*.py[cod]
+
+# Blender autosaves/backups and test output
+*.blend1
+*.blend2
+*.glb
+*.zip
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
+.DS_Store
