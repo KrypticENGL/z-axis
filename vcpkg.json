@@ -2,6 +2,8 @@
   "name": "z-axis",
   "version-string": "0.1.0",
   "dependencies": [
+    "cgltf",
+    "stb",
     {
       "name": "qtbase",
       "default-features": false,

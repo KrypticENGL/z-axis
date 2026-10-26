@@ -17,6 +17,7 @@ __pycache__/
 *.blend1
 *.blend2
 *.glb
+!/assets/*.glb
 *.zip
 
 # Editors / OS

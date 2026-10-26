@@ -1,5 +1,7 @@
 #pragma once
 
+#include "scene/Scene.h"
+
 #include <QWidget>
 
 #include <memory>
@@ -15,6 +17,9 @@ public:
 
     QPaintEngine* paintEngine() const override { return nullptr; }
 
+    // Shown now if the renderer is up, otherwise once it initialises.
+    void setScene(Scene scene);
+
 protected:
     void showEvent(QShowEvent* event) override;
     void resizeEvent(QResizeEvent* event) override;
@@ -24,5 +29,6 @@ private:
     QSize pixelSize() const;
 
     std::unique_ptr<IRenderer> m_renderer;
+    Scene m_scene;
     bool m_ready = false;
 };

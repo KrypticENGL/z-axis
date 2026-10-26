@@ -21,6 +21,17 @@ void RenderWidget::showEvent(QShowEvent*)
     m_ready = m_renderer->init(reinterpret_cast<void*>(winId()), px.width(), px.height());
     if (!m_ready)
         qCritical("Renderer initialisation failed");
+    else
+        m_renderer->loadScene(m_scene);
+}
+
+void RenderWidget::setScene(Scene scene)
+{
+    m_scene = std::move(scene);
+    if (m_ready) {
+        m_renderer->loadScene(m_scene);
+        update();
+    }
 }
 
 void RenderWidget::resizeEvent(QResizeEvent*)
