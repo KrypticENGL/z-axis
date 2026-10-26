@@ -26,3 +26,7 @@ __pycache__/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# CMake / vcpkg build output
+/build
+/vcpkg_installed

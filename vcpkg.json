@@ -1,0 +1,14 @@
+{
+  "name": "z-axis",
+  "version-string": "0.1.0",
+  "dependencies": [
+    {
+      "name": "qtbase",
+      "default-features": false,
+      "features": [
+        "widgets"
+      ]
+    }
+  ],
+  "builtin-baseline": "0e5030f583a5427123cd3b714255e5ae62faa3ba"
+}
