@@ -37,8 +37,10 @@ qt_add_executable(zaxis WIN32
 target_include_directories(zaxis PRIVATE ${SHADER_DIR})
 target_compile_definitions(zaxis PRIVATE UNICODE _UNICODE NOMINMAX WIN32_LEAN_AND_MEAN)
 target_link_libraries(zaxis PRIVATE zaxis_scene Qt6::Widgets d3d11 dxgi)
+# vcpkg deploys Qt's DLLs but not the platform plugin Qt needs to open a window.
 add_custom_command(TARGET zaxis POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/assets $<TARGET_FILE_DIR:zaxis>/assets)
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/assets $<TARGET_FILE_DIR:zaxis>/assets
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::QWindowsIntegrationPlugin> $<TARGET_FILE_DIR:zaxis>/platforms/qwindows.dll)
 
 enable_testing()
 add_executable(test_gltf tests/test_gltf.cpp)
