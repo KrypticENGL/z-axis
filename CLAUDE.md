@@ -1,3 +1,32 @@
+# z-axis
+
+A Windows-native 3D viewer with an embedded Claude Code agent panel.
+
+## Stack
+
+- C++17, CMake, vcpkg, Qt 6 Widgets (UI), Direct3D 11 (rendering), DirectXMath.
+
+## Target: low-end Windows PCs
+
+- Create the D3D11 device with feature level fallback down to 10_0. If no hardware device works, fall back to the WARP software rasterizer.
+- Compile shaders for vs_4_0/ps_4_0. No compute shaders, no tessellation.
+- Rendering budget: low-poly meshes, baked lighting, simple materials, optional FPS cap. No post-processing.
+
+## Architecture
+
+- The renderer sits behind an abstract `IRenderer` interface. A macOS Metal/SceneKit renderer will be added later.
+- Scene logic, glTF loading, scene.json parsing and the agent bridge must contain NO Direct3D or Win32 code.
+
+## Data
+
+- Interchange format: glTF 2.0 (.glb).
+- Scene description: `scene.json` (models, transforms, lights, camera) in a watched folder. The app hot-reloads it.
+
+## Workflow
+
+- Keep each phase small, buildable and committed.
+- Run the build after every change.
+
 <!-- code-review-graph MCP tools -->
 ## MCP Tools: code-review-graph
 
